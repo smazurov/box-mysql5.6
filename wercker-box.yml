@@ -1,5 +1,5 @@
 name: mysql5.6
-version: 0.0.10
+version: 0.0.11
 type: service
 platform: ubuntu@12.04
 script: |
@@ -10,7 +10,7 @@ script: |
   sudo apt-get install mysql-server -y
   mysql -uroot --execute "SHOW VARIABLES"
   cat /etc/mysql/my.cnf
-  sudo -- sh -c "sed -i '' 's/127.0.0.1/0.0.0.0/g' /etc/mysql/my.cnf"
+  sudo -- sh -c "sed -i s/127.0.0.1/0.0.0.0/g /etc/mysql/my.cnf"
   sudo service mysql restart
   mysql -uroot --execute "SHOW VARIABLES"
   cat /etc/mysql/my.cnf
