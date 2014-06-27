@@ -1,5 +1,5 @@
 name: mysql5.6
-version: 0.0.8
+version: 0.0.9
 type: service
 platform: ubuntu@12.04
 script: |
@@ -11,8 +11,7 @@ script: |
   mysql -uroot --execute "SHOW VARIABLES"
   cat /etc/mysql/my.cnf
   sudo -- sh -c "echo 'bind-address = 0.0.0.0' >> /etc/mysql/my.cnf"
-  sudo stop mysql
-  sudo start mysql
+  sudo service mysql restart
   mysql -uroot --execute "SHOW VARIABLES"
   cat /etc/mysql/my.cnf
 env:
