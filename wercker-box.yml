@@ -1,5 +1,5 @@
 name: mysql5.6
-version: 0.0.5
+version: 0.0.6
 type: service
 platform: ubuntu@12.04
 script: |
@@ -10,7 +10,9 @@ script: |
   sudo apt-get install mysql-server -y
   mysql -uroot --execute "SHOW VARIABLES"
   cat /etc/mysql/my.cnf
-  cat "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf
+  sudo cat "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf
+  sudo stop mysql
+  sudo start mysql
   mysql -uroot --execute "SHOW VARIABLES"
   cat /etc/mysql/my.cnf
 env:
