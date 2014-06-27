@@ -1,5 +1,5 @@
 name: mysql5.6
-version: 0.0.2
+version: 0.0.3
 type: service
 platform: ubuntu@12.04
 script: |
@@ -9,6 +9,8 @@ script: |
   sudo apt-get update
   sudo apt-get install mysql-server -y
   export
+  mysql -uroot --execute "SHOW VARIABLES"
+  cat /etc/my.cnf
 env:
   WERCKER_MYSQL_USERNAME: root
   WERCKER_MYSQL_PASSWORD: wercker
