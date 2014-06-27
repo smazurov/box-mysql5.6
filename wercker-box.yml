@@ -1,5 +1,5 @@
 name: mysql5.6
-version: 0.0.14
+version: 0.0.15
 type: service
 platform: ubuntu@12.04
 script: |
@@ -9,8 +9,6 @@ script: |
   sudo apt-get update
   sudo apt-get install mysql-server -y
   sudo -- sh -c "sed -i s/127.0.0.1/0.0.0.0/g /etc/mysql/my.cnf"
-  #TODO(ibash) is this restart actually needed?
-  sudo service mysql restart
 
   # Create user and database
   mysql -uroot --execute "CREATE USER 'wercker'@'%' IDENTIFIED BY 'wercker';"
@@ -23,7 +21,3 @@ env:
   WERCKER_MYSQL_HOST: $$HOST$$
   WERCKER_MYSQL_PORT: 3306
   WERCKER_MYSQL_DATABASE: werckerdb1
-init-script: |
-  sudo stop mysql
-  sudo start mysql --bind-address=$$HOST$$
-  mysql -uroot --execute "SHOW VARIABLES"
