@@ -9,3 +9,8 @@ script: |
   sudo apt-get update
   sudo apt-get install mysql-server -y
   export
+env:
+  WERCKER_MYSQL_USERNAME: root
+  WERCKER_MYSQL_PASSWORD: wercker
+  WERCKER_MYSQL_HOST: $$HOST$$
+  WERCKER_MYSQL_PORT: 3306
