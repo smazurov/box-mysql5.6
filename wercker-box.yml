@@ -1,5 +1,5 @@
 name: mysql5.6
-version: 0.0.4
+version: 0.0.5
 type: service
 platform: ubuntu@12.04
 script: |
@@ -8,9 +8,11 @@ script: |
   sudo add-apt-repository ppa:ondrej/mysql-5.6 -y
   sudo apt-get update
   sudo apt-get install mysql-server -y
-  export
   mysql -uroot --execute "SHOW VARIABLES"
-  sudo find / -name "*.cnf"
+  cat /etc/mysql/my.cnf
+  cat "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf
+  mysql -uroot --execute "SHOW VARIABLES"
+  cat /etc/mysql/my.cnf
 env:
   WERCKER_MYSQL_USERNAME: root
   WERCKER_MYSQL_PASSWORD: wercker
