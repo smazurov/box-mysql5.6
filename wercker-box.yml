@@ -1,5 +1,5 @@
 name: mysql5.6
-version: 0.0.1
+version: 0.0.2
 type: service
 platform: ubuntu@12.04
 script: |
