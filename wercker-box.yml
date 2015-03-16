@@ -15,6 +15,7 @@ script: |
   sudo apt-get update
   sudo apt-get install mysql-server -y
   sudo -- sh -c "sed -i s/127.0.0.1/0.0.0.0/g /etc/mysql/my.cnf"
+  sudo -- sh -c "sed -i 's/^sql_mode=/#sql_mode=/g' /etc/mysql/my.cnf"
 
   # Create user and database
   mysql -uroot --execute "CREATE USER 'wercker'@'%' IDENTIFIED BY 'wercker';"
